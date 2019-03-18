@@ -1,3 +1,6 @@
+[![codecov](https://codecov.io/gh/Aboisier/cs2019-UDEM/branch/master/graph/badge.svg?token=2SUoANqSTO)](https://codecov.io/gh/Aboisier/cs2019-UDEM)
+[![Build Status](https://travis-ci.com/Aboisier/cs2019-UDEM.svg?token=vuBsBM3yD6PMvt3zwT9s&branch=master)](https://travis-ci.com/Aboisier/cs2019-UDEM)
+
 # Readme
 
 Pour configurer votre projet, suivez les étapes suivantes:

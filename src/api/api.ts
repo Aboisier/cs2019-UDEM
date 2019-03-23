@@ -76,11 +76,14 @@ export class Api {
         });
 
         if(correspondance){
+            //client.sendStatus(200);
             return true;
         }
         else{
+            //client.sendStatus(403)
             return false;
         }
+        // TODO IF LACKS A PARAMETER code 400 !!
     }    
 }
 

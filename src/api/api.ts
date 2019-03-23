@@ -31,10 +31,34 @@ export class Api {
 
     private accountExist( email: string){
     
-        return true;
-    
-    }
+        var MongoClient = require('mongodb').MongoClient
+        var isThere = false;
+        
+        MongoClient.connect( process.env.MONGODB_URI , function (err, db) {
+            if (err){
+                throw err
+            }
+        
+            
+            db.collection('usernames').find().toArray(function (err, result) {
+                if (err){
+                    throw err;
+                }
+                else if( result.count() != 0 ){
+                    isThere=true;
+                }
+            })
+            
+        })
 
+        if(isThere){
+            return true;
+        }
+
+        return false; //TODO
+        
+    }
+    
     
 }
 

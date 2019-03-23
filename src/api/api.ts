@@ -1,12 +1,16 @@
 import { Router } from 'express';
+import { sign } from 'jsonwebtoken';
+import { Database } from './Database';
 
 export class Api {
     
     public getRouter(): Router {
+        
         const router = Router();
         // TODO: You probably want to register your routes here.
         router.post('/auth/createAccount', this.createAccount);
-
+        router.post('/api/auth/authenticate', this.authenticate);
+                    
         return router;
     }
 
@@ -31,16 +35,15 @@ export class Api {
 
     private accountExist( email: string){
     
-        var MongoClient = require('mongodb').MongoClient
         var isThere = false;
         
-        MongoClient.connect( process.env.MONGODB_URI , function (err, db) {
+        Database.getQueryResult( function (err, client) {
             if (err){
                 throw err
             }
         
             
-            db.collection('usernames').find().toArray(function (err, result) {
+            client.db.collection('usernames').find().toArray(function (err, result) {
                 if (err){
                     throw err;
                 }
@@ -49,16 +52,20 @@ export class Api {
                 }
             })
             
-        })
+        });
 
         if(isThere){
             return true;
         }
-
+        
         return false; //TODO
         
+    }
+
+    private authenticate(){
+        //res.json(json
     }
     
     
 }
-
+    

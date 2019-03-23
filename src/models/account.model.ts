@@ -1,11 +1,4 @@
 export class Account {
-
-
-    userId: String;
-    email: String;
-    passwordHash: String;
-    passordSalt: String;
-    fullName:String;
     
     constructor(
         public userId: string,
@@ -14,7 +7,7 @@ export class Account {
         public passwordSalt: string,
         public fullName: string
     ) {
-        this.userId = user;
+        this.userId = userId;
         this.email = email;
         this.passwordHash = passwordHash;
         this.passwordSalt = passwordSalt;

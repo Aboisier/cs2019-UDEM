@@ -5,13 +5,13 @@ export class Api {
     public getRouter(): Router {
         const router = Router();
         // TODO: You probably want to register your routes here.
-        router.post('/auth/createAccount', createAccount)
+        router.post('/auth/createAccount', this.createAccount);
 
         return router;
     }
 
-    // fonction qui cree l'account a partir des elements envoyes par l'utilisateur
-    private function createAccount(req,rep){
+    // cree l'account a partir des elements envoyes par l'utilisateur
+    private createAccount(req,rep){
 
         var email: string = req.body.email;
         var password: string = req.body.password;
@@ -21,7 +21,7 @@ export class Api {
             rep.sendStatus(400)
         }
         //TODO faire la fonction accountExist
-        else if ( accountExist(email) ){
+        else if ( this.accountExist(email) ){
             rep.sendStatus(500);
         }
         else {
@@ -29,9 +29,12 @@ export class Api {
         }
     }
 
-    private function accountExist(String email){
-
-        
+    private accountExist( email: string){
+    
+        return true;
+    
     }
+
+    
 }
 

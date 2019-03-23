@@ -5,7 +5,9 @@ import {MongoClient} from 'mongodb';
 export class Database {
 
     private static database : Database = new Database();
-
+    /**
+       connects to the database and execute the callback function with error and client as parameter. It then closes the db 
+**/
     public static getQueryResult(callback){
         Database.connect( function (err, client) {
             
@@ -15,7 +17,9 @@ export class Database {
             
         });
     }
-
+    /**
+       Takes the name of a collection of the database to wich we connect  and insert in it the object in format {key:value,...} and then close connection to the database
+ **/
     public static insert(collectionName,insertSubject){
         
         Database.connect( function(err, client) {

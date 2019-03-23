@@ -38,6 +38,7 @@ else {
     app.get('/*', (req, res) => res.sendFile('index.html'));
 }
 
+app.get('/api/status',apiStatusHandler);
 
 app.listen(process.env.PORT || 8080, () => {
     console.log(`Server started, listening on port ${process.env.PORT || 8080}.`);
@@ -45,4 +46,10 @@ app.listen(process.env.PORT || 8080, () => {
 
 function isDev() {
     return process.env.NODE_ENV === 'development';
+}
+function apiStatusHandler(requete,reponse) {
+    if (requete.url ==='/api/status') {
+        reponse.writeHead(200,{'Content-Type':'application/json'});
+        reponse.write({"statuts":"Up"});
+    }
 }
